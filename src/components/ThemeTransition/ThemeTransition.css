@@ -1,0 +1,12 @@
+.theme-transition {
+  min-height: 100vh;
+  background-color: var(--color-background-primary);
+  color: var(--color-text-primary);
+}
+
+/* Support for prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .theme-transition {
+    transition: none !important;
+  }
+}

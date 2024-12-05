@@ -1,0 +1,158 @@
+/* Barques Page Container */
+.barques {
+  padding: var(--spacing-md);
+  background-color: var(--color-background-primary);
+  min-height: 100vh;
+}
+
+/* Barques Header */
+.barques__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.barques__title {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+}
+
+/* Barques Actions */
+.barques__actions {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+/* Barques Table Container */
+.barques__table-container {
+  background-color: var(--color-surface-primary);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  padding: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+/* Material-UI Table Overrides */
+.barques__table .MuiTableHead-root {
+  background-color: var(--color-background-secondary);
+}
+
+.barques__table .MuiTableCell-head {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
+  background-color: var(--color-background-secondary);
+}
+
+.barques__table .MuiTableCell-body {
+  color: var(--color-text-primary);
+  border-bottom: 1px solid var(--color-border-primary);
+}
+
+.barques__table .MuiTableRow-root:hover {
+  background-color: var(--color-background-hover);
+}
+
+/* Action Buttons */
+.barques__action-btn {
+  color: var(--color-text-primary) !important;
+  background-color: var(--color-surface-secondary) !important;
+}
+
+.barques__action-btn:hover {
+  background-color: var(--color-surface-hover) !important;
+}
+
+.barques__action-btn--delete {
+  color: var(--color-error) !important;
+}
+
+.barques__action-btn--edit {
+  color: var(--color-warning) !important;
+}
+
+/* Empty State */
+.barques__empty {
+  text-align: center;
+  padding: var(--spacing-xl);
+  color: var(--color-text-secondary);
+}
+
+/* Loading State */
+.barques__loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+.barques__loading-spinner {
+  color: var(--color-primary) !important;
+}
+
+/* Error State */
+.barques__error {
+  text-align: center;
+  color: var(--color-error);
+  padding: var(--spacing-lg);
+}
+
+/* Search and Filter */
+.barques__search {
+  margin-bottom: var(--spacing-md);
+}
+
+.barques__search .MuiOutlinedInput-root {
+  background-color: var(--color-surface-primary);
+}
+
+.barques__filter-group {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+/* Pagination */
+.barques__pagination {
+  margin-top: var(--spacing-md);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.barques__pagination .MuiPaginationItem-root {
+  color: var(--color-text-primary);
+}
+
+.barques__pagination .MuiPaginationItem-page.Mui-selected {
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
+/* Responsive Design */
+@media (max-width: var(--breakpoint-tablet)) {
+  .barques__header {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .barques__actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .barques__filter-group {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: var(--breakpoint-mobile)) {
+  .barques {
+    padding: var(--spacing-sm);
+  }
+
+  .barques__table-container {
+    overflow-x: auto;
+  }
+}
