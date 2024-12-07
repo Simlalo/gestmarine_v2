@@ -1,3 +1,4 @@
+// Renamed file to UserModel.ts
 export type UserRole = 'administrateur' | 'gérant';
 
 export interface User {

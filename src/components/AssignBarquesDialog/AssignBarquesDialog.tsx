@@ -5,12 +5,10 @@ import {
   DialogContent,
   DialogActions,
   Button,
-  Table,
-  TableBody,
-  TableCell,
   TableContainer,
   TableHead,
   TableRow,
+  TableCell,
   Paper,
   Checkbox,
   TextField,
@@ -22,7 +20,7 @@ import {
   Tooltip,
   Typography,
   Chip,
-  Pagination,
+  TablePagination,
 } from '@mui/material';
 import { Barque } from '../../types/Barque';
 import { Gerant } from '../../types/User';
@@ -226,10 +224,16 @@ export const AssignBarquesDialog: React.FC<AssignBarquesDialogProps> = ({
               </Typography>
             )}
           </Box>
-          <Pagination
-            count={Math.ceil(filteredBarques.length / rowsPerPage)}
+          <TablePagination
+            component="div"
+            count={filteredBarques.length}
             page={page}
-            onChange={(_, newPage) => setPage(newPage)}
+            rowsPerPage={rowsPerPage}
+            onPageChange={(_, newPage) => setPage(newPage)}
+            onRowsPerPageChange={(e) => {
+              setRowsPerPage(Number(e.target.value));
+              setPage(1);
+            }}
           />
         </Box>
       </DialogContent>

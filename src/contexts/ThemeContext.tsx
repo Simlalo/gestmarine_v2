@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState, useMemo, useCallback } from 'react';
 import { ThemeProvider as MuiThemeProvider } from '@mui/material';
-import { lightTheme, darkTheme } from '../styles/theme';
+import { lightTheme, darkTheme } from '@/features/theme/theme';
 
 export enum ThemeMode {
   LIGHT = 'light',
@@ -13,6 +13,14 @@ export interface ThemeContextType {
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+
+export const useTheme = () => {
+  const context = useContext(ThemeContext);
+  if (context === undefined) {
+    throw new Error('useTheme must be used within a ThemeProvider');
+  }
+  return context;
+};
 
 export const AppThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [mode, setMode] = useState<ThemeMode>(() => {
@@ -48,14 +56,6 @@ export const AppThemeProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       </MuiThemeProvider>
     </ThemeContext.Provider>
   );
-};
-
-export const useTheme = () => {
-  const context = useContext(ThemeContext);
-  if (!context) {
-    throw new Error('useTheme must be used within a ThemeProvider');
-  }
-  return context;
 };
 
 export const ThemeProvider = AppThemeProvider;

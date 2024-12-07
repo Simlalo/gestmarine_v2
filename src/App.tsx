@@ -1,12 +1,14 @@
-import { CssBaseline, GlobalStyles as MuiGlobalStyles } from '@mui/material';
+import { CssBaseline } from '@mui/material';
 import { 
   RouterProvider, 
   createBrowserRouter,
   createRoutesFromElements,
   Route 
 } from 'react-router-dom';
-import { AppThemeProvider } from './contexts/ThemeContext';
+import { Provider } from 'react-redux';
+import { ThemeProvider } from '@features/theme';
 import { AuthProvider } from './contexts/AuthContext';
+import { store } from './store';
 import { AppRoutes } from './routes';
 
 // Configure future flags for React Router v7
@@ -27,37 +29,16 @@ const router = createBrowserRouter(
 
 function App() {
   return (
-    <AppThemeProvider>
-      <AuthProvider>
-        <CssBaseline />
-        <MuiGlobalStyles 
-          styles={{
-            '*': {
-              boxSizing: 'border-box',
-              margin: 0,
-              padding: 0,
-            },
-            html: {
-              WebkitFontSmoothing: 'antialiased',
-              MozOsxFontSmoothing: 'grayscale',
-              height: '100%',
-              width: '100%',
-            },
-            body: {
-              height: '100%',
-              width: '100%',
-            },
-            '#root': {
-              height: '100%',
-              width: '100%',
-            }
-          }}
-        />
-        <div id="root-container" className="app-root">
-          <RouterProvider router={router} />
-        </div>
-      </AuthProvider>
-    </AppThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider>
+        <AuthProvider>
+          <CssBaseline />
+          <div id="root-container" className="app-root">
+            <RouterProvider router={router} />
+          </div>
+        </AuthProvider>
+      </ThemeProvider>
+    </Provider>
   );
 }
 
